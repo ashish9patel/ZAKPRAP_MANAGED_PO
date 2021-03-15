@@ -1,0 +1,29 @@
+managed; // implementation in class zbp_i_rv_akp_purchasedoc unique;
+
+define behavior for ZI_RV_AKP_PurchaseDoc alias PurchaseHeader
+persistent table zakp_pur_doc
+lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _Items { create; }
+}
+
+define behavior for ZI_V_AKP_PurchaseItems alias PurchaseItems
+persistent table zakp_pur_item
+lock dependent by _Header
+//authorization dependent by <association>
+//etag master <field_name>
+{
+
+  field ( readonly ) purchase_doc;
+  update;
+  delete;
+
+  association _Header;
+
+
+}

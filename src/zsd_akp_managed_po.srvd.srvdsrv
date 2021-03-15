@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service def for managed PO'
+define service ZSD_AKP_MANAGED_PO {
+  expose ZC_RV_AKP_PURCHASEDOC;
+  expose ZC_V_AKP_PURCHASEITEMS;
+}
